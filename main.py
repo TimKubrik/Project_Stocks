@@ -1,5 +1,6 @@
 import data_download as dd
 import data_plotting as dplt
+import schedule_actions as shd
 
 
 def main():
@@ -20,11 +21,13 @@ def main():
     dplt.create_and_save_plot(stock_data, ticker, period)
 
     # Вычисление и вывод средней цены закрытия
-    dplt.calculate_and_display_average_price(stock_data)
+    shd.calculate_and_display_average_price(stock_data)
 
     #Уведомление пользователя, если цена акций колебалась более чем на заданный процент за период
-    dplt.notify_if_strong_fluctuations(stock_data, 5)
+    shd.notify_if_strong_fluctuations(stock_data, 5)
 
+    #Сохранение данных в CSV файле и экспорт данных
+    shd.export_data_to_csv(stock_data, 'exported_stock_data.csv')
 
 if __name__ == "__main__":
     main()
