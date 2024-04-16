@@ -22,5 +22,9 @@ def main():
     # Вычисление и вывод средней цены закрытия
     dplt.calculate_and_display_average_price(stock_data)
 
+    #Уведомление пользователя, если цена акций колебалась более чем на заданный процент за период
+    dplt.notify_if_strong_fluctuations(stock_data, 5)
+
+
 if __name__ == "__main__":
     main()
