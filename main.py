@@ -27,7 +27,7 @@ def main():
     shd.notify_if_strong_fluctuations(stock_data, 5)
 
     #Сохранение данных в CSV файле и экспорт данных
-    shd.export_data_to_csv(stock_data, 'exported_stock_data.csv')
+    shd.export_data_to_csv(stock_data, 'output.csv')
 
 if __name__ == "__main__":
     main()

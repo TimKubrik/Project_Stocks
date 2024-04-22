@@ -17,7 +17,9 @@ def notify_if_strong_fluctuations(data, threshold):
         print(f"Цена акций колебалась на {percentage:.2f}% за период, что превышает порог в {threshold}%.")
 
 def export_data_to_csv(data, filename):
+    #Преобразование в DataFrame
     df = pd.DataFrame(data)
-
+    #экспортируем DataFrame в файл CSV
     df.to_csv('output.csv', encoding='utf8')
+
 
