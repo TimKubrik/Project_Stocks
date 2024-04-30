@@ -14,6 +14,12 @@ def main():
     # Получение данных
     stock_data = dd.fetch_stock_data(ticker, period)
 
+    #Расчет и построение графика RSI
+    stock_data = dd.add_rsi(stock_data)
+
+    #Расчет и построение графика MACD
+    stock_data = dd.add_macd(stock_data)
+
     # Добавление скользящей средней к данным
     stock_data = dd.add_moving_average(stock_data)
 
@@ -28,6 +34,8 @@ def main():
 
     #Сохранение данных в CSV файле и экспорт данных
     shd.export_data_to_csv(stock_data, 'output.csv')
+
+
 
 if __name__ == "__main__":
     main()

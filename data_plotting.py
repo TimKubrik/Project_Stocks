@@ -13,6 +13,8 @@ def create_and_save_plot(data, ticker, period, filename=None):
             #добавление линий
             plt.plot(dates, data['Close'].values, label='Close Price')
             plt.plot(dates, data['Moving_Average'].values, label='Moving Average')
+            plt.plot(dates, data['RSI'].values, label='RSI', color='green')
+            plt.plot(dates, data['MACD'].values, label='MACD', color='red')
         else:
             print("Информация о дате отсутствует или не имеет распознаваемого формата.")
             return
@@ -23,11 +25,14 @@ def create_and_save_plot(data, ticker, period, filename=None):
         #построение графиков из двух массивов метода 'plot' массив временных меток и массив закрытия цен
         plt.plot(data['Date'], data['Close'], label='Close Price')
         plt.plot(data['Date'], data['Moving_Average'], label='Moving Average')
+        plt.plot(data['Date'], data['RSI'], label='RSI')
+        plt.plot(data['Date'], data['MACD'], label='MACD', color='orange')
+
     #построение графика по х и у и название
     plt.title(f"{ticker} Цена акций с течением времени")
     plt.xlabel("Дата")
     plt.ylabel("Цена")
-    #добавление легенды на график
+    #добавление картинки на график
     plt.legend()
 
     if filename is None:
