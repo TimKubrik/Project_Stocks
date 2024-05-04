@@ -8,11 +8,22 @@ def main():
     print("Вот несколько примеров биржевых тикеров, которые вы можете рассмотреть: AAPL (Apple Inc), GOOGL (Alphabet Inc), MSFT (Microsoft Corporation), AMZN (Amazon.com Inc), TSLA (Tesla Inc).")
     print("Общие периоды времени для данных о запасах включают: 1д, 5д, 1мес, 3мес, 6мес, 1г, 2г, 5г, 10л, с начала года, макс.")
 
-    ticker = input("Введите тикер акции (например, «AAPL» для Apple Inc):»")
-    period = input("Введите период для данных (например, '1mo' для одного месяца): ")
+    ticker = input("Введите тикер акции (например, «AAPL» для Apple Inc):")
+    period_date = input("Хотите выбрать конкретные даты? yes/no: ")
+
+
+    if period_date.lower()=='yes':
+        start_date = input('Введите начало даты для анализа(например 2023-02-23):')
+        end_date = input('Введите конец даты для анализа(например 2023-03-23):')
+        period = None
+    else:
+        start_date = None
+        end_date = None
+        period = input("Введите период для данных (например, '1mo' для одного месяца): ")
 
     # Получение данных
-    stock_data = dd.fetch_stock_data(ticker, period)
+    stock_data = dd.fetch_stock_data(ticker, start_date, end_date, period)
+
 
     #Расчет и построение графика RSI
     stock_data = dd.add_rsi(stock_data)
