@@ -1,9 +1,14 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from Available_style import available_styles
 
-
-def create_and_save_plot(data, ticker, period, filename=None):
+def create_and_save_plot(data, ticker, period, filename=None, style=None):
     plt.figure(figsize=(10, 6))
+
+    if style in available_styles:
+        plt.style.use(style)  # Применение выбранного стиля к графику
+    else:
+        print(f"Стиль '{style}' не найден. Используйте стили по умолчанию.")
 
     if 'Date' not in data:
         #проверяет, является ли индекс данных столбцом с временными метками.
