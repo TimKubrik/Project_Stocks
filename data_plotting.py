@@ -1,9 +1,24 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from Available_style import available_styles
 
-
-def create_and_save_plot(data, ticker, period, filename=None):
+def create_and_save_plot(data, ticker, period, filename=None, style=None):
     plt.figure(figsize=(10, 6))
+
+    available_styles = [
+        'Solarize_Light2', '_classic_test_patch', '_mpl-gallery',
+        '_mpl-gallery-nogrid', 'bmh', 'classic', 'dark_background',
+        'fast', 'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-v0_8',
+        'seaborn-v0_8-bright', 'seaborn-v0_8-colorblind', 'seaborn-v0_8-dark',
+        'seaborn-v0_8-dark-palette', 'seaborn-v0_8-darkgrid', 'seaborn-v0_8-deep',
+        'seaborn-v0_8-muted', 'seaborn-v0_8-notebook', 'seaborn-v0_8-paper', 'seaborn-v0_8-pastel',
+        'seaborn-v0_8-poster', 'seaborn-v0_8-talk', 'seaborn-v0_8-ticks', 'seaborn-v0_8-white',
+        'seaborn-v0_8-whitegrid', 'tableau-colorblind10'
+    ]
+    if style in available_styles:
+        plt.style.use(style)  # Применение выбранного стиля к графику
+    else:
+        print(f"Стиль '{style}' не найден. Используйте стили по умолчанию.")
 
     if 'Date' not in data:
         #проверяет, является ли индекс данных столбцом с временными метками.
